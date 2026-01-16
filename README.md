@@ -9,6 +9,7 @@
 - Alejandro Morales Miranda
 - Paula Polo Cabas
 - Miguel Fernández Llamas
+- Iona Peperigeanu
 
 ## 📝 Descripción
 
