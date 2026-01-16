@@ -42,15 +42,24 @@ Este trabajo analiza el efecto de filtros espaciales y operaciones morfológicas
 ## 📁 Estructura del proyecto
 
 ```
-├── main.tex              # Documento principal LaTeX
-├── main.pdf              # PDF compilado
-├── portada.tex           # Portada del documento
-├── referencias.bib       # Bibliografía
-├── generar_figuras.py    # Script para generar figuras
-├── images/               # Imágenes originales (I01-I09)
-├── *_montage.png         # Comparativas visuales
-├── *_hist.png            # Histogramas
-└── originals_grid.png    # Grid de imágenes originales
+├── README.md
+├── main.tex                 # Documento principal LaTeX
+├── main.pdf                 # PDF compilado
+├── portada.tex              # Portada del documento
+├── referencias.bib          # Bibliografía
+├── assets/                  # Recursos gráficos
+│   └── Logo_UNIR.png
+├── figures/                 # Figuras generadas
+│   ├── originals_grid.png
+│   ├── I01_montage.png
+│   ├── I04_montage.png
+│   ├── I07_montage.png
+│   └── *_hist.png
+├── images/                  # Imágenes originales (I01-I09)
+├── scripts/                 # Scripts de Python
+│   └── generar_figuras.py
+└── notebooks/               # Jupyter notebooks
+    └── *.ipynb
 ```
 
 ## 🚀 Cómo compilar
