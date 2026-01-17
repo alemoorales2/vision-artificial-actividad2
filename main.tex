@@ -94,9 +94,9 @@ I03 & Médica & Open-I (Indiana CXR) & Radiografía tórax \\
 I04 & Industrial & MVTec AD & Grid (defecto: glue) \\
 I05 & Industrial & MVTec AD & Leather (defecto: glue) \\
 I06 & Industrial & MVTec AD & Metal nut (defecto: color) \\
-I07 & Satélite & EuroSAT/alternativa & Residential \\
-I08 & Satélite & EuroSAT/alternativa & River \\
-I09 & Satélite & EuroSAT/alternativa & Forest \\
+I07 & Satélite & EuroSAT RGB & River \\
+I08 & Satélite & EuroSAT RGB & Highway \\
+I09 & Satélite & EuroSAT RGB & Industrial \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -162,9 +162,9 @@ I03 & Médica & gaussian\_s1 & 0.939 & 0.006 & 0.239 \\
 I04 & Industrial & median\_r2 & 0.977 & 0.016 & 0.184 \\
 I05 & Industrial & unsharp\_r1\_a1 & 0.960 & 0.031 & 0.090 \\
 I06 & Industrial & gaussian\_s2 & 0.942 & 0.000 & 0.407 \\
-I07 & Satélite & unsharp\_r1\_a1 & 0.970 & 0.064 & 0.133 \\
-I08 & Satélite & gaussian\_s1 & 0.824 & 0.008 & 0.107 \\
-I09 & Satélite & unsharp\_r1\_a1 & 0.979 & 0.043 & 0.067 \\
+I07 & Satélite & gaussian\_s1 & 0.908 & 0.007 & 0.111 \\
+I08 & Satélite & gaussian\_s1 & 0.871 & 0.020 & 0.201 \\
+I09 & Satélite & unsharp\_r1\_a1 & 0.949 & 0.061 & 0.363 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -176,7 +176,7 @@ El Gaussiano con $\sigma$ bajo domina, ofreciendo SSIM elevado y reducción de $
 La mediana ($r=2$) ofrece SSIM muy alto en patrones (I04). En defectos finos (I05, tipo \textit{fold}), unsharp incrementa la prominencia del defecto a costa de mayor $\hat{\sigma}$. En fondos dominantes (I06), el Gaussiano elimina ruido residual sin alterar la estructura global.
 
 \paragraph{Satelital (I07--I09).}
-En escenas urbanas (I07), unsharp intensifica la textura pero amplifica ruido. El Gaussiano equilibra suavizado y preservación en ríos (I08). En bosques (I09), unsharp realza textura con incremento moderado de ruido.
+En escenas fluviales (I07, clase River), el Gaussiano equilibra suavizado y preservación de los contornos del cauce. En carreteras (I08, clase Highway), la mediana preserva las líneas de la carretera mientras reduce ruido de vegetación. En zonas industriales/portuarias (I09, clase Industrial), unsharp realza las estructuras de los barcos y edificaciones con incremento moderado de ruido.
 
 \subsection{Cambios en histogramas}
 El análisis de histogramas revela patrones consistentes según el tipo de filtro aplicado:
@@ -202,8 +202,8 @@ Médica & I01 & opening\_r4 & 4 & 120663 & 0.877 \\
 Médica & I02 & opening\_r4 & 7 & 117097 & 0.851 \\
 Industrial & I06 & opening\_r4 & 1 & 100368 & 0.908 \\
 Industrial & I05 & dilation\_r2 & 516 & 80774 & 0.603 \\
-Satélite & I08 & closing\_r2 & 12 & 706 & 0.881 \\
-Satélite & I07 & closing\_r2 & 36 & 1171 & 0.758 \\
+Satélite & I07 & closing\_r2 & 18 & 892 & 0.875 \\
+Satélite & I08 & opening\_r2 & 24 & 1056 & 0.862 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -231,7 +231,7 @@ Las Figuras~\ref{fig:comp_I01}--\ref{fig:comp_I07} muestran patrones recurrentes
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{figures/I07_montage.png}
-\caption{Comparativa visual en escena satelital urbana (I07): efectos de suavizado y realce.}
+\caption{Comparativa visual en escena satelital fluvial (I07, River de EuroSAT): efectos de suavizado y realce sobre el cauce y vegetación.}
 \label{fig:comp_I07}
 \end{figure}
 
@@ -253,7 +253,7 @@ Las Figuras~\ref{fig:comp_I01}--\ref{fig:comp_I07} muestran patrones recurrentes
 \centering
 \includegraphics[width=\linewidth]{figures/I07_hist.png}
 \end{minipage}
-\caption{Histogramas normalizados por dominio: (arriba-izq.) I01 radiografía con distribución bimodal; (arriba-der.) I04 industrial con pico dominante; (abajo) I07 satélite con distribución más uniforme. El Gaussiano conserva la forma global mientras unsharp expande el rango dinámico.}
+\caption{Histogramas normalizados por dominio: (arriba-izq.) I01 radiografía con distribución bimodal; (arriba-der.) I04 industrial con pico dominante; (abajo) I07 satélite fluvial (River) con distribución característica de zonas acuáticas. El Gaussiano conserva la forma global mientras unsharp expande el rango dinámico.}
 \label{fig:histogramas}
 \end{figure}
 
